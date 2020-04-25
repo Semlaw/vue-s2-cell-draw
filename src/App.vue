@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import geo from './s2/S2Cell.js';
+import s2Cell from 's2-cell-draw';
 const { S2 } = require('s2-geometry');
 window.S2 = S2;  
 
@@ -182,19 +182,10 @@ export default {
       }
       console.log('draw');
       
-      // const point = amapInstance.getCenter();
       const bounds = amapInstance.getBounds();
       console.time('polygonList');
       
-      // const polygonList = geo.createPolygonListFromPoint(
-      //   [point.lng, point.lat],
-      //   [
-      //     [bounds.southwest.lng, bounds.southwest.lat],
-      //     [bounds.northeast.lng, bounds.northeast.lat],
-      //   ],
-      //   level,zoom
-      // );
-      const polygonList = geo.createPolygonListFromBounds(
+      const polygonList = s2Cell.createPolygonListFromBounds(
         {
           bounds: [
             [bounds.southwest.lng, bounds.southwest.lat],
